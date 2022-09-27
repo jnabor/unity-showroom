@@ -369,9 +369,8 @@ MonoBehaviour:
     enumValues: []
     descendantCount: 0
   m_ImportDependencies: []
-  m_GraphVersion: 6
+  m_GraphVersion: 9
   m_ResourceVersion: 1
-  m_saved: 1
   m_SubgraphDependencies: []
   m_CategoryPath: 
 --- !u!114 &114380859405582094
@@ -434,6 +433,8 @@ MonoBehaviour:
   capacity: 16384
   stripCapacity: 16
   particlePerStripCount: 16
+  needsComputeBounds: 0
+  boundsMode: 1
   m_Space: 1
 --- !u!114 &114512514798047786
 MonoBehaviour:
@@ -1177,9 +1178,9 @@ MonoBehaviour:
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
-  - {fileID: 8926484042661614767}
   - {fileID: 8926484042661614541}
   - {fileID: 8926484042661614855}
+  - {fileID: 8926484042661614767}
   - {fileID: 8926484042661614543}
   m_OutputSlots: []
   m_Label: 
@@ -1194,6 +1195,7 @@ MonoBehaviour:
   useAlphaClipping: 0
   generateMotionVector: 0
   excludeFromTAA: 0
+  sortingPriority: 0
   m_SubOutputs:
   - {fileID: 8926484042661614803}
   cullMode: 0
@@ -1202,25 +1204,29 @@ MonoBehaviour:
   colorMapping: 0
   uvMode: 1
   useSoftParticle: 0
-  sortPriority: 0
+  vfxSystemSortPriority: 0
   sort: 1
   indirectDraw: 1
   computeCulling: 0
   frustumCulling: 0
   castShadows: 0
   useExposureWeight: 0
+  flipbookLayout: 0
   shaderGraph: {fileID: 0}
-  materialType: 2
-  onlyAmbientLighting: 0
-  diffusionProfileAsset: {fileID: 11400000, guid: 26bdddf49760c61438938733f07fa2a2,
-    type: 2}
-  multiplyThicknessWithAlpha: 1
+  materialSettings:
+    m_PropertyNames: []
+    m_PropertyValues: []
   useBaseColorMap: -1
   useMaskMap: 0
   useNormalMap: 0
   useEmissiveMap: 0
   colorMode: -1
   useEmissive: 1
+  materialType: 2
+  onlyAmbientLighting: 0
+  diffusionProfileAsset: {fileID: 11400000, guid: 26bdddf49760c61438938733f07fa2a2,
+    type: 2}
+  multiplyThicknessWithAlpha: 1
   doubleSided: 0
   preserveSpecularLighting: 0
   enableShadows: 0
@@ -1873,6 +1879,7 @@ MonoBehaviour:
   m_Disabled: 0
   cullWhenFaded: 1
   fadeMode: 2
+  affectShadows: 0
 --- !u!114 &8926484042661614627
 MonoBehaviour:
   m_ObjectHideFlags: 0
