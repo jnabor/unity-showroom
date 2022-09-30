@@ -22,7 +22,7 @@ public class ScreenCapturer : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-        string currentScreenshot = string.Format("Capture_{0}_{1}.png",Camera.main.name, DateTime.Now.ToLongTimeString().Replace(" ", "_").Replace(":", "_"));
+        string currentScreenshot = string.Format("Capture_{0}_{1}.png", Camera.main.name, DateTime.Now.ToLongTimeString().Replace(" ", "_").Replace(":", "_"));
         ScreenCapture.CaptureScreenshot(currentScreenshot);
 
         foreach (Canvas targetCanvas in targetCanvases)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,28 +6,42 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class TestController : MonoBehaviour
 {
+    public List<GameObject> colouredObjects = new List<GameObject>();
+    public List<Material> mColourSet = new List<Material>();
 
-    public ReturnResult SimpleMethod(IDictionary<string, object> namedParameters = null)
+    public void SetMaterialColour(int index)
     {
-        if (namedParameters == null)
-        {
-            namedParameters = new Dictionary<string, object>();
-            namedParameters.Add("wall", "1");
-        }
-           
+        if (mColourSet.Count < index)
+            return;
 
-        Debug.Log("Cool, fire via http connect ");
-        foreach (KeyValuePair<string, object> kv in namedParameters)
+        SetPartMaterial(mColourSet[index]);
+    }
+
+    private void SetPartMaterial(Material lMaterial)
+    {
+        foreach (GameObject colouredObject in colouredObjects)
         {
-            Debug.Log(kv.Value.ToString());
+            colouredObject.GetComponent<MeshRenderer>().material = lMaterial;
         }
-            
-        string wall = namedParameters["wall"].ToString();
+    }
+
+    public ReturnResult RenderScene(string wall = "1")
+    {
+
         Debug.Log("Cool, fire via http connect " + wall);
+
+
+        int wallIndex = int.Parse(wall);
+
+        ExecuteOnMainThread.RunOnMainThread.Enqueue(() => {
+            SetMaterialColour(wallIndex);
+        });
+
+        
 
         ReturnResult result = new ReturnResult
         {
-            code = 1,
+            code = wallIndex,
             msg = "testing wall " + wall
         };
 

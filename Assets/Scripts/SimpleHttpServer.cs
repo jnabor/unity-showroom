@@ -203,8 +203,9 @@ body{
 
     private void Process(HttpListenerContext context)
     {
-        string filename = context.Request.Url.AbsolutePath;
-        filename = filename.Substring(1);
+
+        string absPath = context.Request.Url.AbsolutePath;
+        string filename = absPath.Substring(1);
 
         if (string.IsNullOrEmpty(filename))
         {
@@ -240,10 +241,25 @@ body{
         {
             TryServeFile();
         }
+        else if(absPath == "config")
+        {
+
+
+
+
+
+
+
+        }
         else if (method != null)
         {
             Debug.Log("The url is a method");
             context.Response.ContentType = "application/json";
+            foreach (KeyValuePair<string, object> kv in namedParameters)
+            {
+                Debug.Log("param " + kv.Value.ToString());
+            }
+
 
             object result = null;
             try
